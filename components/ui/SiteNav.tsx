@@ -1,0 +1,80 @@
+"use client";
+
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { CommandPalette } from "./CommandPalette";
+import { MagneticButton } from "./MagneticButton";
+
+const navItems = [
+  { label: "Home", href: "#home" },
+  { label: "About", href: "#about" },
+  { label: "Projects", href: "#projects" },
+  { label: "Skills", href: "#skills" },
+  { label: "Contact", href: "#contact" },
+];
+
+export function SiteNav() {
+  const [aurora, setAurora] = useState(false);
+  const [sound, setSound] = useState(false);
+
+  const toggleTheme = () => {
+    setAurora((value) => {
+      document.documentElement.dataset.theme = value ? "dark" : "aurora";
+      return !value;
+    });
+  };
+
+  return (
+    <motion.header
+      className="fixed left-1/2 top-5 z-40 flex w-[min(calc(100%_-_1rem),1440px)] -translate-x-1/2 items-center justify-between gap-4 rounded-full border border-white/10 bg-black/35 px-4 py-3 shadow-2xl shadow-black/30 backdrop-blur-2xl md:px-6"
+      initial={false}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+    >
+      <a href="#home" className="flex items-center gap-3 text-white" aria-label="Laxita Singh home">
+        <span className="tracking-[0.55em] text-sm font-semibold uppercase">Laxita</span>
+        <span className="h-1.5 w-1.5 rounded-full bg-emerald-300 shadow-[0_0_18px_rgba(52,211,153,0.9)]" />
+      </a>
+
+      <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary">
+        {navItems.map((item, index) => (
+          <a
+            key={item.href}
+            href={item.href}
+            className="group relative rounded-full px-5 py-2 text-sm text-white/62 transition hover:text-white"
+          >
+            {item.label}
+            {index === 0 ? (
+              <span className="absolute bottom-0 left-1/2 h-1.5 w-1.5 -translate-x-1/2 rounded-full bg-emerald-300" />
+            ) : null}
+          </a>
+        ))}
+      </nav>
+
+      <div className="flex items-center gap-2">
+        <CommandPalette />
+        <button
+          type="button"
+          className="grid h-11 w-11 place-items-center rounded-full border border-white/10 bg-white/[0.04] text-white/75 transition hover:border-violet-300/40 hover:text-white"
+          onClick={() => setSound((value) => !value)}
+          aria-label={sound ? "Disable sound effects" : "Enable sound effects"}
+          title={sound ? "Sound on" : "Sound off"}
+        >
+          {sound ? "♪" : "∿"}
+        </button>
+        <button
+          type="button"
+          className="grid h-11 w-11 place-items-center rounded-full border border-white/10 bg-white/[0.04] text-white/75 transition hover:border-cyan-300/40 hover:text-white"
+          onClick={toggleTheme}
+          aria-label="Toggle accent theme"
+          title="Toggle accent theme"
+        >
+          {aurora ? "☀" : "☾"}
+        </button>
+        <MagneticButton className="hidden md:inline-flex" href="#contact">
+          Let&apos;s Talk
+        </MagneticButton>
+      </div>
+    </motion.header>
+  );
+}
