@@ -116,7 +116,7 @@ export function ProjectsGalaxy() {
 
   return (
     <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_380px] lg:items-stretch">
-      <div className="relative h-[560px] overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.025]">
+      <div className="relative h-[360px] overflow-hidden rounded-[1.5rem] border border-white/10 bg-white/[0.025] sm:h-[440px] lg:h-[560px] lg:rounded-[2rem]">
         <Canvas gl={{ antialias: true, alpha: true }} dpr={[1, 1.6]} performance={{ min: 0.55 }}>
           <Suspense fallback={null}>
             <GalaxyScene selected={selected} onSelect={setSelected} />
@@ -126,15 +126,15 @@ export function ProjectsGalaxy() {
       <AnimatePresence mode="wait">
         <motion.aside
           key={selected.id}
-          className="glass-panel rounded-[2rem] border border-white/10 p-6"
+          className="glass-panel rounded-[1.5rem] border border-white/10 p-5 sm:p-6 lg:rounded-[2rem]"
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -12 }}
           transition={{ type: "spring", stiffness: 210, damping: 22 }}
         >
-          <p className="text-sm uppercase tracking-[0.3em] text-cyan-200/70">{selected.category}</p>
-          <h3 className="mt-4 text-4xl leading-none text-white">{selected.title}</h3>
-          <p className="mt-4 text-white/62">{selected.description}</p>
+          <p className="text-xs uppercase tracking-[0.24em] text-cyan-200/70 sm:text-sm sm:tracking-[0.3em]">{selected.category}</p>
+          <h3 className="mt-3 text-3xl leading-none text-white sm:mt-4 sm:text-4xl">{selected.title}</h3>
+          <p className="mt-4 text-sm leading-6 text-white/62 sm:text-base">{selected.description}</p>
           <div className="mt-6 flex flex-wrap gap-2">
             {selected.stack.map((item) => (
               <span key={item} className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-sm text-white/68">
@@ -142,12 +142,12 @@ export function ProjectsGalaxy() {
               </span>
             ))}
           </div>
-          <p className="mt-8 rounded-2xl border border-white/10 bg-black/20 p-4 text-cyan-100/80">{selected.metrics}</p>
+          <p className="mt-6 rounded-2xl border border-white/10 bg-black/20 p-4 text-sm leading-6 text-cyan-100/80 sm:mt-8 sm:text-base">{selected.metrics}</p>
           <a
             href={selected.href}
             target="_blank"
             rel="noreferrer"
-            className="mt-6 inline-flex rounded-full bg-white px-5 py-3 text-sm font-medium text-black transition hover:bg-cyan-200"
+            className="mt-6 inline-flex w-full justify-center rounded-full bg-white px-5 py-3 text-sm font-medium text-black transition hover:bg-cyan-200 sm:w-auto"
           >
             Open project →
           </a>

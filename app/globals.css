@@ -39,12 +39,16 @@
 }
 
 html {
+  width: 100%;
+  max-width: 100%;
   background: var(--background);
   color: var(--foreground);
   scroll-behavior: smooth;
 }
 
 body {
+  width: 100%;
+  max-width: 100%;
   min-height: 100vh;
   margin: 0;
   overflow-x: hidden;
@@ -87,6 +91,10 @@ button {
 
 button {
   font: inherit;
+}
+
+canvas {
+  display: block;
 }
 
 ::selection {
@@ -331,9 +339,63 @@ button {
     display: none;
   }
 
+  body::before {
+    background-size: 56px 56px;
+  }
+
   .skill-glass-card {
-    width: 52px;
-    min-height: 60px;
+    width: 46px;
+    min-height: 54px;
+    border-radius: 10px;
+  }
+
+  .skill-glass-card__icon {
+    width: 18px;
+    height: 18px;
+    margin: 7px auto 4px;
+    border-radius: 6px;
+    font-size: 8px;
+  }
+
+  .skill-glass-card strong {
+    font-size: 7px;
+  }
+
+  .skill-glass-card small {
+    display: none;
+  }
+
+  .project-holo-label {
+    min-width: 82px;
+    padding: 7px 8px;
+    border-radius: 10px;
+  }
+
+  .project-holo-label span {
+    font-size: 6px;
+    letter-spacing: 0.12em;
+  }
+
+  .project-holo-label strong {
+    font-size: 8px;
+  }
+}
+
+@media (max-width: 640px) {
+  .grain {
+    opacity: 0.08;
+  }
+
+  .tech-chip {
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+  }
+
+  .glass-panel,
+  .glass-pill {
+    backdrop-filter: blur(18px) saturate(140%);
   }
 }
 

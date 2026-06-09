@@ -294,7 +294,7 @@ function Scene({ selectedSkill, onSelect, reducedMotion }: SkillSolarSystemProps
 
 export function SkillSolarSystem({ selectedSkill, onSelect, reducedMotion }: SkillSolarSystemProps) {
   return (
-    <div className="relative h-[620px] min-h-[520px] w-full overflow-hidden rounded-[2rem] border border-white/10 bg-black/20 shadow-2xl shadow-black/40 md:h-[760px]">
+    <div className="relative h-[360px] min-h-[360px] w-full overflow-hidden rounded-[1.5rem] border border-white/10 bg-black/20 shadow-2xl shadow-black/40 sm:h-[460px] md:h-[560px] lg:h-[680px] lg:rounded-[2rem] xl:h-[720px]">
       <Canvas
         shadows
         gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
@@ -312,15 +312,15 @@ export function SkillSolarSystem({ selectedSkill, onSelect, reducedMotion }: Ski
       <AnimatePresence mode="wait">
         <motion.aside
           key={selectedSkill.id}
-          className="glass-panel absolute bottom-5 left-5 right-5 rounded-2xl border border-white/10 p-4 md:left-auto md:right-6 md:w-80"
+          className="glass-panel absolute bottom-3 left-3 right-3 rounded-2xl border border-white/10 p-3 sm:bottom-5 sm:left-5 sm:right-5 sm:p-4 md:left-auto md:right-6 md:w-80"
           initial={{ opacity: 0, y: 16, scale: 0.98 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: -12, scale: 0.98 }}
           transition={{ type: "spring", stiffness: 210, damping: 22 }}
         >
-          <p className="text-xs uppercase tracking-[0.28em] text-cyan-200/70">Focused skill</p>
-          <h3 className="mt-2 text-2xl text-white">{selectedSkill.name}</h3>
-          <p className="mt-2 text-sm leading-6 text-white/62">{selectedSkill.detail}</p>
+          <p className="text-[0.65rem] uppercase tracking-[0.24em] text-cyan-200/70 sm:text-xs sm:tracking-[0.28em]">Focused skill</p>
+          <h3 className="mt-1.5 text-xl text-white sm:mt-2 sm:text-2xl">{selectedSkill.name}</h3>
+          <p className="mt-1.5 line-clamp-2 text-xs leading-5 text-white/62 sm:mt-2 sm:line-clamp-none sm:text-sm sm:leading-6">{selectedSkill.detail}</p>
         </motion.aside>
       </AnimatePresence>
     </div>

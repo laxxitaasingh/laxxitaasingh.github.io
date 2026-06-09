@@ -33,7 +33,7 @@ export function MagneticButton({ children, className, variant = "ghost", ...prop
         ref.current?.style.setProperty("--magnet-y", "0px");
       }}
       className={cn(
-        "magnetic-button group relative inline-flex min-h-12 items-center justify-center gap-3 overflow-hidden rounded-full px-7 text-sm font-medium transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-300",
+        "magnetic-button group relative inline-flex min-h-11 w-full items-center justify-center gap-3 overflow-hidden rounded-full px-5 text-sm font-medium transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-300 sm:min-h-12 sm:w-auto sm:px-7",
         variant === "primary" ? "button-primary text-black" : "button-ghost text-white",
         className,
       )}

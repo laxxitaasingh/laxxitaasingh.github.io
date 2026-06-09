@@ -26,13 +26,13 @@ export function SiteNav() {
 
   return (
     <motion.header
-      className="fixed left-1/2 top-5 z-40 flex w-[min(calc(100%_-_1rem),1440px)] -translate-x-1/2 items-center justify-between gap-4 rounded-full border border-white/10 bg-black/35 px-4 py-3 shadow-2xl shadow-black/30 backdrop-blur-2xl md:px-6"
+      className="fixed left-1/2 top-3 z-40 flex w-[min(calc(100%_-_0.75rem),1440px)] -translate-x-1/2 items-center justify-between gap-2 rounded-2xl border border-white/10 bg-black/40 px-3 py-2.5 shadow-2xl shadow-black/30 backdrop-blur-2xl sm:top-5 sm:rounded-full sm:px-4 sm:py-3 md:px-6"
       initial={false}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
     >
-      <a href="#home" className="flex items-center gap-3 text-white" aria-label="Laxita Singh home">
-        <span className="tracking-[0.55em] text-sm font-semibold uppercase">Laxita</span>
+      <a href="#home" className="flex min-w-0 items-center gap-2 text-white sm:gap-3" aria-label="Laxita Singh home">
+        <span className="truncate text-xs font-semibold uppercase tracking-[0.32em] sm:text-sm sm:tracking-[0.55em]">Laxita</span>
         <span className="h-1.5 w-1.5 rounded-full bg-emerald-300 shadow-[0_0_18px_rgba(52,211,153,0.9)]" />
       </a>
 
@@ -51,11 +51,11 @@ export function SiteNav() {
         ))}
       </nav>
 
-      <div className="flex items-center gap-2">
+      <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
         <CommandPalette />
         <button
           type="button"
-          className="grid h-11 w-11 place-items-center rounded-full border border-white/10 bg-white/[0.04] text-white/75 transition hover:border-violet-300/40 hover:text-white"
+          className="grid h-9 w-9 place-items-center rounded-full border border-white/10 bg-white/[0.04] text-sm text-white/75 transition hover:border-violet-300/40 hover:text-white sm:h-11 sm:w-11 sm:text-base"
           onClick={() => setSound((value) => !value)}
           aria-label={sound ? "Disable sound effects" : "Enable sound effects"}
           title={sound ? "Sound on" : "Sound off"}
@@ -64,7 +64,7 @@ export function SiteNav() {
         </button>
         <button
           type="button"
-          className="grid h-11 w-11 place-items-center rounded-full border border-white/10 bg-white/[0.04] text-white/75 transition hover:border-cyan-300/40 hover:text-white"
+          className="grid h-9 w-9 place-items-center rounded-full border border-white/10 bg-white/[0.04] text-sm text-white/75 transition hover:border-cyan-300/40 hover:text-white sm:h-11 sm:w-11 sm:text-base"
           onClick={toggleTheme}
           aria-label="Toggle accent theme"
           title="Toggle accent theme"
